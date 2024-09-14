@@ -211,7 +211,17 @@ export function otherPlayerService(msg) {
     map_entities.forEach((mapID, id) => {
       var isChain = false;
       // if(mapID.type != 'street' && mapID.type != 'off_grid')
-      if (mapID.type == "off_grid") console.debug(id, helper.fGBname(mapID.cityentity_id), mapID);
+      if (mapID.type == "off_grid") {
+        // 733 GE
+        // 734 AD
+        // 735 GBG
+        // 736 Tower
+        // 737 Forge Plus
+        // 738 Harbour
+        // 739 Castle
+        // 740 QI
+        if (id < 733 || id > 740) console.debug(id, helper.fGBname(mapID.cityentity_id), mapID);
+      }
 
       if (mapID.state && mapID.state.is_motivated == true) motivated++;
       if (mapID.state && mapID.state.is_motivated != true) notmotivated++;
@@ -250,7 +260,7 @@ export function otherPlayerService(msg) {
         clanBuildings++;
         clanHOFcount++;
       } else if (mapID.state.current_product && mapID.state.current_product.name === "penal_unit") {
-        //console.log(CityEntityDefs[mapID.cityentity_id].name, mapID.state.current_product.amount);
+        //console.debug(CityEntityDefs[mapID.cityentity_id].name, mapID.state.current_product.amount);
         visitPenal += mapID.state.current_product.amount;
         visitTrazLevel = mapID.level;
       } else if (mapID.cityentity_id == "X_AllAge_Expedition") visitToRLevel = mapID.level;
@@ -292,7 +302,6 @@ export function otherPlayerService(msg) {
         // }
 
         if (entity.entity_levels) {
-          forgePoints = 0;
           const production = entity.entity_levels;
           // console.debug(production,production[mapID.level]);
           if (
@@ -303,7 +312,7 @@ export function otherPlayerService(msg) {
             for (var value = 0; value < production[mapID.level].production_values.length; value++) {
               if (production[mapID.level].production_values[value].type == "strategy_points") {
                 forgePoints = production[mapID.level].production_values[value].value;
-                // console.debug(production[mapID.level].production_values[value].value);
+                if (forgePoints) console.log(`${entity.name} ${forgePoints}FP`); 
               }
             }
             if (
@@ -313,9 +322,10 @@ export function otherPlayerService(msg) {
               mapID.state.current_product.product.resources &&
               mapID.state.current_product.product.resources.strategy_points
             ) {
-              console.debug(mapID);
+              //console.debug(mapID);
               visitForgePoints += forgePoints;
-              console.debug(helper.fGBname(mapID.cityentity_id), entity, mapID);
+              console.log(`visitForgePoints#1 ${visitForgePoints}FP`); 
+              //console.debug(helper.fGBname(mapID.cityentity_id), entity, mapID);
               if (DEV && checkDebug()) {
                 if (mapID.state.__class__ == "ProductionFinishedState")
                   visitbetafp += `<br>#${id}: ${mapID.x}/${
@@ -390,7 +400,7 @@ export function otherPlayerService(msg) {
           // console.debug(entity.name,bonus,entity,mapID);
           bonus.forEach((ability) => {
             if (ability.__class__ == "ChainLinkAbility") {
-              console.log("BENBEN: " + ability.chainId);
+              //console.debug("BENBEN: " + ability.chainId);
               isChain = true;
             }
             if (ability.__class__ == "AddResourcesToGuildTreasuryAbility") {
@@ -427,7 +437,7 @@ export function otherPlayerService(msg) {
                 ability.additionalResources["AllAge"].resources.strategy_points
               )
                 forgePoints += ability.additionalResources["AllAge"].resources.strategy_points;
-              // console.debug(forgePoints);
+              if (forgePoints) console.log(`${CityEntityDefs[mapID.cityentity_id].name} ${forgePoints}FP`); 
               if (DEV && checkDebug()) {
                 if (
                   ability.additionalResources["AllAge"] &&
@@ -439,7 +449,7 @@ export function otherPlayerService(msg) {
               }
             }
             if (ability.__class__ == "RandomUnitOfAgeWhenMotivatedAbility") {
-              //console.log(entity.name, ability, ability.amount);
+              //console.debug(entity.name, ability, ability.amount);
               visitPenal += ability.amount;
             }
           });
@@ -468,12 +478,13 @@ export function otherPlayerService(msg) {
                   bonusAr.bonuses[j].revenue[entityAge].resources.strategy_points
                 )
                   forgePoints += bonusAr.bonuses[j].revenue[entityAge].resources.strategy_points;
-                // console.debug(forgePoints);
+                if (forgePoints) console.log(`${entityAge} ${entity.name} ${forgePoints}FP`); 
                 if (
                   bonusAr.bonuses[j].revenue["AllAge"] &&
                   bonusAr.bonuses[j].revenue["AllAge"].resources.strategy_points
                 )
                   forgePoints += bonusAr.bonuses[j].revenue["AllAge"].resources.strategy_points;
+                if (forgePoints) console.log(`${entity.name} ${forgePoints}FP`); 
                 // console.debug(forgePoints);
                 // else
                 // forgePoints = 0;
@@ -517,6 +528,7 @@ export function otherPlayerService(msg) {
           }
           if (forgePoints) {
             visitForgePoints += forgePoints;
+            console.log(`visitForgePoints#2 ${visitForgePoints}FP`); 
             if (DEV && checkDebug()) {
               visitbetafp += `<br>#${id}: ${mapID.x}/${
                 mapID.y
@@ -527,7 +539,7 @@ export function otherPlayerService(msg) {
         }
 
         if (entity.hasOwnProperty("components")) {
-          console.debug(entity.name, entity, mapID);
+          //console.debug(entity.name, entity, mapID);
           const comp = entity.components[entityAge];
           if (comp && comp.hasOwnProperty("boosts")) {
             comp.boosts.boosts.forEach((boost) => {
@@ -549,7 +561,7 @@ export function otherPlayerService(msg) {
             visitbetaad += `<br>#${id}: ${totalboost}% ${entityVisitAttack}/${entityVisitDefense}/${entityVisitCityAttack}/${entityVisitCityDefense} ${visitAttack}/${visitDefense}/${visitCityAttack}/${visitCityDefense} ${helper.fGBname(
               mapID.cityentity_id
             )}`;
-            console.debug(entity.name, entity, mapID);
+            //console.debug(entity.name, entity, mapID);
             visitAD.push({
               name: entity.name,
               att: entityVisitAttack,
@@ -570,7 +582,9 @@ export function otherPlayerService(msg) {
           if (mapID.state.current_product.product.resources) {
             if (mapID.state.current_product.product.resources.strategy_points) {
               forgePoints = mapID.state.current_product.product.resources.strategy_points;
+              if (forgePoints) console.log(mapID.state.current_product, `${forgePoints}FP`); 
               visitForgePoints += forgePoints;
+              console.log(`visitForgePoints#3 ${visitForgePoints}FP`);
               if (DEV && checkDebug()) {
                 // console.debug(CityEntityDefs[mapID.cityentity_id].name,mapID.state.current_product);
                 visitbetafp += `<br>#${id}: ${forgePoints}FP Total: ${visitForgePoints}FP ${helper.fGBname(
@@ -692,7 +706,7 @@ export function otherPlayerService(msg) {
           }% ${entityVisitAttack}/${entityVisitDefense}/${entityVisitCityAttack}/${entityVisitCityDefense} ${visitAttack}/${visitDefense}/${visitCityAttack}/${visitCityDefense} ${helper.fGBname(
             mapID.cityentity_id
           )}`;
-          console.debug(id, helper.fGBname(mapID.cityentity_id), mapID);
+          //console.debug(id, helper.fGBname(mapID.cityentity_id), mapID);
           // visitAD.push({
           // 	'name': helper.fGBname(mapID.cityentity_id),
           // 	'att': entityVisitAttack,
@@ -794,7 +808,7 @@ export function otherPlayerService(msg) {
     });
   }
 
-  console.debug(goodsList);
+  //console.debug(goodsList);
   // Object.keys(goodsList).forEach(good => {
   // 	var rssName;
   // 	ResourceDefs.forEach(resource => {
@@ -821,7 +835,7 @@ export function otherPlayerService(msg) {
   visitstatsHTML += `<span data-i18n="daily">Daily</span> FP: ${visitForgePoints ? visitForgePoints : 0} <br>`;
   if (visitArcBonus) visitstatsHTML += `${fArcname()} <span data-i18n="bonus">Bonus</span>: ${visitArcBonus}%<br>`;
   if (visitPenal) visitstatsHTML += `<span data-i18n="army">Army Units</span>: ${visitPenal}<br>`;
-  //visitstatsHTML += `<span data-i18n="Castle System, Tavern, and Potion boosts not considered"></span><br>`;
+ //visitstatsHTML += `<span data-i18n="Castle System, Tavern, and Potion boosts not considered"></span><br>`;
   visitstatsHTML += `<span data-i18n="attackers">Attackers</span>: ${visitAttack}% Att, ${visitDefense}% Def<br>`;
   visitstatsHTML += `<span data-i18n="defenders">Defenders</span>: ${visitCityAttack}% Att, ${visitCityDefense}% Def<br>`;
   visitstatsHTML += `<span data-i18n="gbg-attackers">GBG Attackers</span>: ${redAttackBattlegrounds}% Att, ${redDefenseBattlegrounds}% Def<br>`;
@@ -931,8 +945,8 @@ export function otherPlayerService(msg) {
 }
 
 export function otherPlayerServiceUpdateActions(msg) {
-  console.debug("=== SOCIAL LISTS ===");
-  console.debug(msg);
+  //console.debug("=== SOCIAL LISTS ===");
+  //console.debug(msg);
 
   // if(!users.checkGuild() && msg.responseData.socialbar_list.length){
   if (msg.friends.length) {
@@ -969,7 +983,7 @@ export function otherPlayerServiceUpdateActions(msg) {
 				<div id="listsText" class="collapse ${collapse.collapseLists ? "" : "show"} resize">`;
 
       if (showOptions.showFriends) {
-        console.debug(collapse.collapseFriends);
+        //console.debug(collapse.collapseFriends);
         friendsHTML += `<div class="alert alert-success show collapsed nopadding" role="alert"><p id="friendsTextLabel" href="#friendsText" data-bs-toggle="collapse">
       ${element.icon("friendsicon", "friendsText", collapse.collapseFriends)}
 					<strong>Friends</strong></p><div id="friendsCopy">`;
@@ -1045,7 +1059,7 @@ function getFriendsHTML(list) {
     // console.debug(entry);
     if (entry.hasOwnProperty("is_self") && entry.__class__ != "ClanMember") {
       // do nothing
-      console.debug(entry);
+      //console.debug(entry);
     }
     // else if(entry.is_friend == true && entry.accepted != true){
     //     // SELF
@@ -1313,7 +1327,7 @@ function fBoost(boost) {
     boost.type != "tavern_visit_fp_drop" &&
     boost.type != "construction_time"
   ) {
-    console.debug("other:", boost.type);
+    //console.debug("other:", boost.type);
     return 0;
   }
   return boost.value;
