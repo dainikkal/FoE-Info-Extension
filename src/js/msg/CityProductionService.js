@@ -54,9 +54,10 @@ export function pickupProduction(msg) {
         // updateGalaxy(reward.cityentity_id);
         // var resources = reward.state.current_product.product.resources;
         // console.debug(resources);
-        reward.state.productionOption.products.array.forEach((element) => {
-          if (element.hasOwnProperty("playerResources") && element.playerResources.hasOwnProperty("resources"))
-            Object.keys(element.playerResources.resources).forEach((resource) => {
+        if (reward?.state?.productionOption?.products?.array) {
+          reward.state.productionOption.products.array.forEach((element) => {
+            if (element.hasOwnProperty("playerResources") && element.playerResources.hasOwnProperty("resources"))
+              Object.keys(element.playerResources.resources).forEach((resource) => {
               const name = helper.fResourceShortName(resource);
               // console.debug(name,resource)
               if (rewardsCity[name]) rewardsCity[name] += reward.state.current_product.product.resources[resource];
