@@ -15,7 +15,7 @@ export function getResourceDefinitions(msg) {
   if (msg.responseData) {
     saveResourceDefs(msg.responseData);
   } else {
-    console.debug("Resource Definitions msg:", msg);
+//    console.debug("Resource Definitions msg:", msg);
   }
 }
 

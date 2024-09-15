@@ -19,7 +19,7 @@ import * as collapse from "../fn/collapse.js";
 import * as element from "../fn/AddElement";
 
 export function getBonuses(msg) {
-  console.debug("Info Erased");
+//  console.debug("Info Erased");
   // console.debug(collapseOptions);
   City.ForgePoints = 0;
   City.Coins = 0;
@@ -55,7 +55,7 @@ export function getLimitedBonuses(msg) {
   if (showOptions && showOptions.showBonus && msg.responseData.length) {
     var bonusHTML = "";
     var bonus = document.getElementById("bonus");
-    console.debug(msg.responseData);
+//    console.debug(msg.responseData);
 
     msg.responseData.forEach((entry) => {
       // console.debug(entry);

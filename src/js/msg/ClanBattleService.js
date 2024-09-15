@@ -34,7 +34,7 @@ export function getContinent(msg) {
   // collapseOptions('collapseGVGinfo',false);
 
   if (gvgContainer == null) {
-    console.debug("1");
+//    console.debug("1");
     gvgContainer = document.createElement("div");
     gvg.appendChild(gvgContainer);
     gvgSummary = document.createElement("div");
@@ -42,7 +42,7 @@ export function getContinent(msg) {
   }
 
   if (document.getElementById("gvgInfo") == null) {
-    console.debug("2");
+//    console.debug("2");
     gvgContainer = document.createElement("div");
     gvgContainer.id = "gvgInfo";
     gvgContainer.className = "alert alert-success alert-dismissible show collapsed";
@@ -131,7 +131,7 @@ export function getContinent(msg) {
 
     $("body").i18n();
   } else {
-    console.debug(msg.responseData.length);
+//    console.debug(msg.responseData.length);
   }
   // console.debug(gvgSummary,gvgAges);
   // gvgSummary.appendChild(gvgAges);
@@ -328,7 +328,7 @@ export function getProvinceDetailed(msg) {
 
     // console.debug(Guilds,GuildSectors,GuildPower,GVGstatus);
   } else {
-    console.debug(msg.responseData.length);
+//    console.debug(msg.responseData.length);
   }
 }
 
@@ -379,8 +379,8 @@ function buildGvgInnerDiv(parentDiv, collapseFunc, collapseVar, name, text) {
 }
 
 export function deploySiegeArmy(msg) {
-  console.debug("Siege Placed", msg);
+//  console.debug("Siege Placed", msg);
 }
 export function grantIndependence(msg) {
-  console.debug("Grant Freedom", msg);
+//  console.debug("Grant Freedom", msg);
 }

@@ -100,7 +100,7 @@ export function armyUnitManagementService(msg) {
       $("body").i18n();
     }
   }
-  console.debug(ArmyUnits);
+//  console.debug(ArmyUnits);
 }
 
 export function clearArmyUnits() {

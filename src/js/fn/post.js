@@ -40,13 +40,13 @@ async function postData(url = "", data = {}) {
     referrerPolicy: "strict-origin-when-cross-origin", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data), // body data type must match "Content-Type" header
   }).then((response) => {
-    console.debug(response); // JSON data parsed by `data.json()` call
+//    console.debug(response); // JSON data parsed by `data.json()` call
     for (var item of response.headers.entries()) {
-      console.debug(item);
+//      console.debug(item);
     }
   });
 
-  console.debug(response);
+//  console.debug(response);
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
@@ -57,7 +57,7 @@ export function postToDiscord(text) {
 
   const hook = getKey(webHookUrl);
 
-  console.log(hook);
+//  console.log(hook);
 
   /*
    * Create a new webhook
@@ -104,7 +104,7 @@ export function postToDiscord(text) {
   oReq.onreadystatechange = function () {
     // if (oReq.readyState == XMLHttpRequest.DONE) {
     // alert(oReq.responseText);
-    console.debug(oReq.readyState, oReq.responseText);
+//    console.debug(oReq.readyState, oReq.responseText);
     // }
     // $('#testModal').modal('show');
   };
@@ -250,7 +250,7 @@ export function postTargetsToDiscord() {
   // oReq.withCredentials = true;
   oReq.setRequestHeader("Content-type", "application/json");
   oReq.onreadystatechange = function () {
-    console.debug(oReq.readyState, oReq.responseText);
+//    console.debug(oReq.readyState, oReq.responseText);
   };
   oReq.send(JSON.stringify(params));
   console.debug(
@@ -281,7 +281,7 @@ export function postGBGtoSS() {
   oReq.onreadystatechange = function () {
     if (oReq.readyState == XMLHttpRequest.DONE) {
       // alert(oReq.responseText);
-      console.debug(GameOrigin, oReq.responseText);
+//      console.debug(GameOrigin, oReq.responseText);
     }
   };
   oReq.send(JSON.stringify(reqData));
@@ -339,7 +339,7 @@ export function postPlayerToSS(visitData) {
   oReq.onreadystatechange = function () {
     if (oReq.readyState == XMLHttpRequest.DONE) {
       // alert(oReq.responseText);
-      console.debug(oReq.responseText);
+//      console.debug(oReq.responseText);
       try {
         alerts.innerHTML = `<div class="alert alert-danger alert-dismissible show " role="alert">
 				${element.close()}
@@ -358,5 +358,5 @@ export function postPlayerToSS(visitData) {
   };
   oReq.send(JSON.stringify(reqData));
   // oReq.send(reqData.toString);
-  console.debug(reqData, JSON.stringify(reqData));
+//  console.debug(reqData, JSON.stringify(reqData));
 }

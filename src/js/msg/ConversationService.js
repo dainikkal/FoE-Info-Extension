@@ -86,7 +86,7 @@ export function getConversation(msg) {
 
 function getPercent(title) {
   try {
-    console.debug("title", title);
+//    console.debug("title", title);
     if (!title || title == "") return;
     else if (title.includes("%")) {
       var text = title.split("%")[0];
@@ -100,7 +100,7 @@ function getPercent(title) {
           setCurrentPercent(parseInt(text));
           return;
         } else {
-          console.debug("in else 1");
+//          console.debug("in else 1");
           const arrtitletext = title.split(" ");
           arrtitletext.forEach(getIntValue);
         }
@@ -132,23 +132,23 @@ function getPercent(title) {
     else if (title.includes("200%")) setCurrentPercent(200);
     else if (title.includes("1.9") || title.includes("1,9")) setCurrentPercent(190);
     else {
-      console.debug("in else 2");
+//      console.debug("in else 2");
       setCurrentPercent(190);
       const arrtitletext = title.split(" ");
       arrtitletext.forEach(getIntValue);
     }
   } catch (error) {
-    console.log(error);
+//    console.log(error);
   }
 }
 
 function getIntValue(item, index) {
-  console.debug("getIntValue 1", item, " ", index);
+//  console.debug("getIntValue 1", item, " ", index);
   if (item.includes("Hr")) return;
   item = item.replace("%", "");
-  console.debug("getIntValue 2", item, " ", index);
+//  console.debug("getIntValue 2", item, " ", index);
   if (parseInt(item) > 0) {
     setCurrentPercent(parseInt(item));
-    console.debug("setCurrentPercent getIntValue", parseInt(item), " ", index);
+//    console.debug("setCurrentPercent getIntValue", parseInt(item), " ", index);
   }
 }

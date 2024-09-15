@@ -97,7 +97,7 @@ export function startupService(msg) {
   // console.debug('parsed:', parsed);
   // console.debug('msg:', msg);
   const user = msg.responseData.user_data;
-  console.debug("user_data:", user);
+//  console.debug("user_data:", user);
   // setMyName(user.user_name);
   // setMyInfo.id(user.player_id);
   // setMyGuild(user.clan_name);
@@ -112,15 +112,15 @@ export function startupService(msg) {
   goodsBuildings = [];
   clanGoodsBuildings = [];
 
-  console.debug("window", window);
+//  console.debug("window", window);
 
-  console.debug("user :", MyInfo);
+//  console.debug("user :", MyInfo);
   if (language != "auto") {
     $.i18n({
       locale: language,
     });
   }
-  console.debug(language, $.i18n().locale, $.i18n.debug);
+//  console.debug(language, $.i18n().locale, $.i18n.debug);
 
   // console.log('checkBeta:', users.checkBeta());
   if (DEV) {
@@ -148,7 +148,7 @@ export function startupService(msg) {
 
   if (msg.responseData.city_map.entities.length) {
     var map_entities = msg.responseData.city_map.entities;
-    console.debug(map_entities, CityEntityDefs);
+//    console.debug(map_entities, CityEntityDefs);
     for (var id = 0; id < map_entities.length; id++) {
       const mapID = map_entities[id];
       // if (DEV && checkDebug()) {
@@ -199,7 +199,7 @@ export function startupService(msg) {
       } else if (mapID.cityentity_id == "X_OceanicFuture_Landmark3") {
         // if(mapID.bonus)
         //     Galaxy.amount = mapID.bonus.amount;
-        console.debug("Galaxy.amount", mapID);
+//        console.debug("Galaxy.amount", mapID);
       }
 
       if (mapID.state.hasOwnProperty("next_state_transition_at")) {
@@ -212,7 +212,7 @@ export function startupService(msg) {
 
       if (mapID.state.current_product) {
         if (DEV && checkDebug()) {
-          console.debug(fEntityName(mapID.cityentity_id), mapID.state.current_product.name, mapID);
+//          console.debug(fEntityName(mapID.cityentity_id), mapID.state.current_product.name, mapID);
         }
         if (mapID.state.current_product.guildProduct) {
           //     console.debug(fEntityName(mapID.cityentity_id), mapID.state.current_product.name,mapID);
@@ -222,7 +222,7 @@ export function startupService(msg) {
             Object.keys(mapID.state.current_product.guildProduct.resources).forEach((entry) => {
               if (entry != "clan_power") {
                 if (DEV && checkDebug())
-                  console.debug(mapID.state.current_product.guildProduct.resources[entry], entry);
+//                  console.debug(mapID.state.current_product.guildProduct.resources[entry], entry);
                 ResourceDefs.forEach((resource) => {
                   if (resource.id === entry) {
                     era = resource.era;
@@ -237,9 +237,9 @@ export function startupService(msg) {
                 name: helper.fEntityNameTrim(mapID.cityentity_id) + " " + helper.fGVGagesname(era),
                 goods: goods,
               });
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID, goods, era);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID, goods, era);
             } else {
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
             }
             // console.debug(mapID.state.current_product.guildProduct.resources,mapID.state.current_product.guildProduct.resources.clan_power);
             if (mapID.state.current_product.guildProduct.resources.clan_power)
@@ -248,7 +248,7 @@ export function startupService(msg) {
           }
         }
         if (mapID.state.current_product.goods) {
-          if (DEV && checkDebug()) console.debug(mapID.state.current_product.goods);
+          //$1(mapID.state.current_product.goods);
           if ((mapID.state.current_product.goods.name = "clan_goods")) {
             // console.debug(mapID);
             var goods = 0;
@@ -262,19 +262,19 @@ export function startupService(msg) {
                 name: helper.fEntityNameTrim(mapID.cityentity_id) + " " + helper.fGVGagesname(MyInfo.era),
                 goods: goods,
               });
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID, goods);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID, goods);
             } else {
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
             }
             if (DEV && checkDebug()) {
-              console.debug(fEntityName(mapID.cityentity_id), goods, mapID.state.current_product);
+//              console.debug(fEntityName(mapID.cityentity_id), goods, mapID.state.current_product);
               // visitbetagoods += `<br>#${id}: ${goods} ${fEntityName(mapID.cityentity_id)}`;
             }
           }
         }
         if (mapID.state.current_product.product) {
           if (DEV && checkDebug())
-            console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID.state.current_product.product);
+//            console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID.state.current_product.product);
           if (mapID.state.current_product.product.resources) {
             if (mapID.state.current_product.product.resources.premium)
               diamonds += mapID.state.current_product.product.resources.premium;
@@ -309,7 +309,7 @@ export function startupService(msg) {
                   });
                 }
                 // buildingsReady.push({'name': helper.fEntityNameTrim(mapID.cityentity_id),'ready': mapID.state.next_state_transition_at});
-                console.debug(fEntityName(mapID.cityentity_id), mapID, Galaxy.bonus);
+//                console.debug(fEntityName(mapID.cityentity_id), mapID, Galaxy.bonus);
               }
             }
             if (mapID.state.current_product.product.resources.money)
@@ -354,10 +354,10 @@ export function startupService(msg) {
                 name: helper.fEntityNameTrim(mapID.cityentity_id),
                 goods: goods,
               });
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), goods, mapID);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), goods, mapID);
               totalGoods += goods;
             } else {
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
             }
           }
           // console.debug('goods: ', goodsList);
@@ -373,7 +373,7 @@ export function startupService(msg) {
 
       if (mapID.state.productionOption) {
         if (DEV && checkDebug()) {
-          console.debug(fEntityName(mapID.cityentity_id), mapID.state.productionOption.name, mapID);
+//          console.debug(fEntityName(mapID.cityentity_id), mapID.state.productionOption.name, mapID);
         }
         if (mapID.state.productionOption.guildProduct) {
           //     console.debug(fEntityName(mapID.cityentity_id), mapID.state.productionOption.name,mapID);
@@ -391,9 +391,9 @@ export function startupService(msg) {
                 name: helper.fEntityNameTrim(mapID.cityentity_id),
                 goods: goods,
               });
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID, goods);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID, goods);
             } else {
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
             }
             // console.debug(mapID.state.productionOption.guildProduct.resources,mapID.state.productionOption.guildProduct.resources.clan_power);
             if (mapID.state.productionOption.guildProduct.resources.clan_power)
@@ -402,7 +402,7 @@ export function startupService(msg) {
           }
         }
         if (mapID.state.productionOption.goods) {
-          if (DEV && checkDebug()) console.debug(mapID.state.productionOption.goods);
+          //$1(mapID.state.productionOption.goods);
           if ((mapID.state.productionOption.goods.name = "clan_goods")) {
             // console.debug(mapID);
             var goods = 0;
@@ -416,25 +416,25 @@ export function startupService(msg) {
                 name: helper.fEntityNameTrim(mapID.cityentity_id),
                 goods: goods,
               });
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID, goods);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID, goods);
             } else {
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
             }
             if (DEV && checkDebug()) {
-              console.debug(fEntityName(mapID.cityentity_id), goods, mapID.state.productionOption);
+//              console.debug(fEntityName(mapID.cityentity_id), goods, mapID.state.productionOption);
               // visitbetagoods += `<br>#${id}: ${goods} ${fEntityName(mapID.cityentity_id)}`;
             }
           }
         }
         if (mapID.state.productionOption.products.length > 0) {
-          if (DEV && checkDebug()) console.debug(mapID.state.productionOption);
+          //$1(mapID.state.productionOption);
           mapID.state.productionOption.products.forEach((product) => {
-            console.debug(product);
+//            console.debug(product);
             if (product.hasOwnProperty("playerResources") && product.playerResources.hasOwnProperty("resources")) {
               const resources = product.playerResources.resources;
               if (resources.hasOwnProperty("premium")) diamonds += resources.premium;
               if (resources.hasOwnProperty("strategy_points")) {
-                if (DEV && checkDebug()) console.debug(mapID.state.productionOption);
+                //$1(mapID.state.productionOption);
                 forgePoints += resources.strategy_points;
               }
               if (resources.money) City.Coins += resources.money;
@@ -478,10 +478,10 @@ export function startupService(msg) {
                 goods: goods,
               });
               if (DEV && checkDebug())
-                console.debug(helper.fEntityNameTrim(mapID.cityentity_id), goods, mapID.cityentity_id);
+//                console.debug(helper.fEntityNameTrim(mapID.cityentity_id), goods, mapID.cityentity_id);
               totalGoods += goods;
             } else {
-              if (DEV && checkDebug()) console.debug(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
+              //$1(helper.fEntityNameTrim(mapID.cityentity_id), mapID);
             }
           });
           // console.debug('goods: ', goodsList);
@@ -501,7 +501,7 @@ export function startupService(msg) {
               }FP <strong>${helper.fEntityNameTrim(mapID.cityentity_id)}</strong>`;
             } else {
               beta.innerHTML += `<br>#${id}: ${mapID.cityentity_id} ${forgePoints}FP Total: ${City.ForgePoints}FP`;
-              console.debug(mapID.cityentity_id, mapID.state.productionOption.name, mapID);
+//              console.debug(mapID.cityentity_id, mapID.state.productionOption.name, mapID);
             }
           }
           if (mapID.type != "greatbuilding" && helper.fEntityNameTrim(mapID.cityentity_id)) {
@@ -515,7 +515,7 @@ export function startupService(msg) {
             });
           }
           // buildingsReady.push({'name': helper.fEntityNameTrim(mapID.cityentity_id),'ready': mapID.state.next_state_transition_at});
-          console.debug(fEntityName(mapID.cityentity_id), mapID, Galaxy.bonus);
+//          console.debug(fEntityName(mapID.cityentity_id), mapID, Galaxy.bonus);
         }
         if (mapID.state.productionOption.clan_power) {
           clanPower += mapID.state.productionOption.clan_power;
@@ -527,7 +527,7 @@ export function startupService(msg) {
       }
 
       if (mapID.hasOwnProperty("components")) {
-        console.debug(mapID.name, mapID);
+//        console.debug(mapID.name, mapID);
         const comp = mapID.components[user.era];
         if (comp && comp.hasOwnProperty("boosts")) {
         }
@@ -535,7 +535,7 @@ export function startupService(msg) {
           if (comp.production.hasOwnProperty("options")) {
             const products = comp.production.options[0];
             products.array.forEach((product) => {
-              console.debug(product);
+//              console.debug(product);
             });
           }
         }
@@ -564,11 +564,11 @@ export function startupService(msg) {
           City.CityDefense += mapID.bonus.value;
         } else if (mapID.bonus.type == "quest_boost") {
           City.ChatBonus = mapID.bonus.value;
-        } else console.debug("mapID.bonus: ", mapID.bonus);
+        } //else console.debug("mapID.bonus: ", mapID.bonus);
       }
       if (DEV && found == false) {
         debug.innerHTML += `<br>#${id}: ${fEntityName(mapID.cityentity_id)}`;
-        if (DEV && checkDebug()) console.debug("NOT FOUND: ", id, mapID.cityentity_id, mapID);
+        //$1("NOT FOUND: ", id, mapID.cityentity_id, mapID);
       }
     }
   }
@@ -626,7 +626,7 @@ export function startupService(msg) {
     tooltipHTML.clanGoods = ``;
     clanGoodsBuildings.forEach((entry, id) => {
       tooltipHTML.clanGoods += `${entry.goods} ${entry.name}<br>`;
-      if (DEV && checkDebug()) console.debug("clanGoodsBuildings", entry.goods, entry.name);
+      //$1("clanGoodsBuildings", entry.goods, entry.name);
     });
   }
 
@@ -804,7 +804,7 @@ export function startupService(msg) {
 
 export function emissaryService(msg) {
   if (DEV && checkDebug()) {
-    console.debug("msg:", msg);
+//    console.debug("msg:", msg);
     var beta = document.getElementById("beta");
 
     if (beta == null) {
@@ -980,7 +980,7 @@ export function boostServiceAllBoosts(msg) {
         boost[j].type != "tavern_visit_fp_drop" &&
         boost[j].type != "construction_time"
       )
-        console.debug("other boost:", boost[j].type, boost[j]);
+       //console.debug("other boost:", boost[j].type, boost[j]);
     }
     // if(showBoosts)
     // output.innerHTML = `<div class="alert alert-info alert-dismissible show" role="alert">${element.close()}Boosts:<p>Coins ${CoinBoost}%</p><p>Attack ${Attack}%</p><p>Defense ${Defense}%</p></div>`;
@@ -1027,10 +1027,10 @@ function fLoadi18n() {
         // sv: "i18n/sv.json"
       })
       .done(function () {
-        console.debug("i18n.load OK");
+//        console.debug("i18n.load OK");
       });
   } catch {
-    console.debug("i18n.load error");
+//    console.debug("i18n.load error");
   }
 }
 
@@ -1252,7 +1252,7 @@ function fGoodsText(age, goods) {
     return `<p>` + goods["SpaceAgeJupiterMoon"] + `</p>`;
   } else if (age == "sat") {
     return `<p>` + goods["SpaceAgeTitan"] + `</p>`;
-  } else console.debug(age);
+  } //else console.debug(age);
 }
 
 export function updateGalaxy(reward) {
@@ -1270,7 +1270,7 @@ export function showGalaxy() {
   Galaxy.bonus.sort(function (a, b) {
     return b.fp - a.fp;
   });
-  console.debug("showGalaxy", Galaxy);
+//  console.debug("showGalaxy", Galaxy);
   Galaxy.html = `<div class="alert alert-success alert-dismissible show collapsed" role="alert"><p id="galaxyTextLabel" href="#galaxyText" data-bs-toggle="collapse">
     ${element.icon("galaxyicon", "galaxyText", collapse.collapseGalaxy)}
     <strong>Galaxy Double Collection:</strong></p>`;

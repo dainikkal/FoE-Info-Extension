@@ -68,7 +68,7 @@ export default function set(key, value) {
   switch (key) {
     case "collapseFriends":
       collapseFriends = value;
-      console.debug(collapseFriends);
+//      console.debug(collapseFriends);
       break;
     case "collapseGuild":
       collapseGuild = value;
@@ -169,7 +169,7 @@ export default function set(key, value) {
       break;
 
     default:
-      console.debug(key, value);
+//      console.debug(key, value);
       break;
   }
 }

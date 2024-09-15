@@ -59,13 +59,13 @@ if (url && url.hasOwnProperty("sheetGameURL")) googleSheetGame = url.sheetGameUR
 
 export function getConstruction(msg) {
   rankings = msg.responseData.rankings;
-  console.debug("rankings", rankings);
+//  console.debug("rankings", rankings);
   showGreatBuldingDonation();
 }
 
 export function contributeForgePoints(msg) {
   rankings = msg;
-  console.debug("rankings", rankings);
+//  console.debug("rankings", rankings);
   showGreatBuldingDonation();
 }
 
@@ -86,7 +86,7 @@ export function showGreatBuldingDonation() {
 
   // if (debug == true)
   // 	greatbuilding.innerHTML += `<div>${contentType} : ${msg.requestClass} : ${msg.requestMethod}</div>`;
-  console.debug("rankings", rankings);
+//  console.debug("rankings", rankings);
   if (rankings.length) {
     var Rank = 0;
 
@@ -137,7 +137,7 @@ export function showGreatBuldingDonation() {
     }
     // console.debug('Reward',Reward);
 
-    console.debug("outputHTML", outputHTML, donorsHTML);
+//    console.debug("outputHTML", outputHTML, donorsHTML);
     if (showOptions.showGBDonors) {
       fCheckOutput();
 
@@ -177,7 +177,7 @@ export function showGreatBuldingDonation() {
     // Check Top1
     getPlaceValues(1);
     getSafe(1);
-    console.debug("RewardFP/Donation/Profit ", RewardFP, Donation, Profit);
+//    console.debug("RewardFP/Donation/Profit ", RewardFP, Donation, Profit);
     if (Donation.isLessThan(BigNumber(remaining))) {
       if (Profit >= 0) {
         olddonationHTML += `<p class="invest-good">1st Place<br><span data-i18n="lock">Lock</span>: ${Donation}FP<br><span data-i18n="profit">Profit</span>: ${Profit} (${Percent}%)<br>`;
@@ -270,7 +270,7 @@ export function showGreatBuldingDonation() {
       else {
         getPlaceValues(3);
         getSafe(3);
-        console.debug("RewardFP/Donation/Profit ", RewardFP, Donation, Profit, donateCustom, currentPercent);
+//        console.debug("RewardFP/Donation/Profit ", RewardFP, Donation, Profit, donateCustom, currentPercent);
         if (Donation.isLessThan(BigNumber(remaining))) {
           if (Profit >= 0) {
             olddonationHTML += `<p class="invest-good">3rd Place<br><span data-i18n="lock">Lock</span>: ${Donation}FP<br><span data-i18n="profit">Profit</span>: ${Profit} (${Percent}%)<br>`;
@@ -551,14 +551,14 @@ function fCheckOutput() {
 }
 
 function fDonationSuggest(reward) {
-  console.debug(reward, currentPercent, BigNumber(reward).times(currentPercent).div(100).dp(0));
+//  console.debug(reward, currentPercent, BigNumber(reward).times(currentPercent).div(100).dp(0));
   return new BigNumber(reward).times(currentPercent).div(100).dp(0);
 }
 
 export function setCurrentPercent(percent) {
   if (percent) currentPercent = percent;
   else currentPercent = donationPercent;
-  console.debug(percent);
+//  console.debug(percent);
 }
 
 function gbTabSafe(
@@ -794,7 +794,7 @@ function inactiveHTML(members) {
 
 function getDonations_new(place, safe, donateSuggest) {
   var footer = "";
-  console.debug(place, safe, donateSuggest);
+//  console.debug(place, safe, donateSuggest);
   if (place <= 5 && safe[4]) {
     footer += `P5(${donateSuggest[4]}) `;
   }
@@ -821,7 +821,7 @@ function getPlayerLink() {
 
 function getDonations(place, safe, donateSuggest) {
   var footer = "";
-  console.debug(place, safe, donateSuggest);
+//  console.debug(place, safe, donateSuggest);
   for (var i = 5; i > 0; i--) {
     if (place <= i && donateSuggest[i - 1] > 0 && (safe[i - 1] || !showOptions.hideUnsafe)) {
       footer += `<span class="${safe[i - 1] ? "invest-good" : "invest-bad"}">P${
@@ -833,11 +833,11 @@ function getDonations(place, safe, donateSuggest) {
 }
 
 function clickDonation(event) {
-  console.debug("event", event);
+//  console.debug("event", event);
   if (event.shiftKey) {
     useNewDonationPanel = !useNewDonationPanel;
     storage.set("useNewDonationPanel", useNewDonationPanel);
-    console.debug("useNewDonationPanel", useNewDonationPanel);
+//    console.debug("useNewDonationPanel", useNewDonationPanel);
     showGreatBuldingDonation();
   }
 }

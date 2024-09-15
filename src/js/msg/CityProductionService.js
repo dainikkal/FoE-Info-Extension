@@ -25,7 +25,7 @@ export function pickupProduction(msg) {
       var name = "";
       if (MilitaryDefs[unit.unitTypeId]) name = MilitaryDefs[unit.unitTypeId].name;
       else name = unit.unitTypeId;
-      console.debug(unit.unitTypeId, name);
+//      console.debug(unit.unitTypeId, name);
       if (rewardsArmy[name]) rewardsArmy[name]++;
       else rewardsArmy[name] = 1;
     });
@@ -66,7 +66,7 @@ export function pickupProduction(msg) {
       }
     });
   }
-  console.debug(rewardsCity);
+//  console.debug(rewardsCity);
   var reward = [];
   reward.source = "pickupProduction";
   reward.name = "";

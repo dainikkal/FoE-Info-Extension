@@ -210,18 +210,9 @@ export function otherPlayerService(msg) {
     var canBePolished = 0;
     map_entities.forEach((mapID, id) => {
       var isChain = false;
-      // if(mapID.type != 'street' && mapID.type != 'off_grid')
-      if (mapID.type == "off_grid") {
-        // 733 GE
-        // 734 AD
-        // 735 GBG
-        // 736 Tower
-        // 737 Forge Plus
-        // 738 Harbour
-        // 739 Castle
-        // 740 QI
-        if (id < 733 || id > 740) console.debug(id, helper.fGBname(mapID.cityentity_id), mapID);
-      }
+      // if (mapID.type == "off_grid") {
+      //  console.debug(id, helper.fGBname(mapID.cityentity_id), mapID);
+      // }
 
       if (mapID.state && mapID.state.is_motivated == true) motivated++;
       if (mapID.state && mapID.state.is_motivated != true) notmotivated++;
@@ -584,7 +575,7 @@ export function otherPlayerService(msg) {
               forgePoints = mapID.state.current_product.product.resources.strategy_points;
               if (forgePoints) console.log(mapID.state.current_product, `${forgePoints}FP`); 
               visitForgePoints += forgePoints;
-              console.log(`visitForgePoints#3 ${visitForgePoints}FP`);
+             console.log(`visitForgePoints#3 ${visitForgePoints}FP`);
               if (DEV && checkDebug()) {
                 // console.debug(CityEntityDefs[mapID.cityentity_id].name,mapID.state.current_product);
                 visitbetafp += `<br>#${id}: ${forgePoints}FP Total: ${visitForgePoints}FP ${helper.fGBname(
@@ -1119,7 +1110,7 @@ function getFriendsHTML(list) {
     } else if (entry.hasOwnProperty("is_friend") || entry.hasOwnProperty("is_guild_member")) {
       html += `<tr><td>${entry.name}</td></tr>`;
       // console.debug(entry);
-    } else console.debug(entry, html);
+    } //else console.debug(entry, html);
     // if(entry.is_self == true && type == 'ClanMember'){
     // 	setMyGuildPosition(entry.rank);
     // 	// console.debug('MyInfo.guildPosition',entry.rank);
@@ -1357,7 +1348,7 @@ function fGoodsTally(age, good) {
   else if (age == "SpaceAgeJupiterMoon") Goods.sajm += good;
   else if (age == "SpaceAgeTitan") Goods.sat += good;
   else if (age == "NoAge") Goods.noage += good;
-  else console.debug(age, good);
+  //else console.debug(age, good);
 }
 
 function checkInactivePlunder(friends) {

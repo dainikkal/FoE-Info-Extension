@@ -154,27 +154,27 @@ function restore_options() {
       }
       if (items.tool) {
         document.getElementById("language").value = items.tool.language;
-        console.debug(items.tool);
+//        console.debug(items.tool);
       }
       if (items.targets != null) {
         document.getElementById("targets").value = items.targets;
-        console.debug(items.targets);
+//        console.debug(items.targets);
       }
       if (items.targetText != null) {
         document.getElementById("targetText").value = items.targetText;
-        console.debug(items.targetText);
+//        console.debug(items.targetText);
       }
       if (items.toolOptions) {
         document.getElementById("minSize").value = items.toolOptions.minSize;
-        console.debug(items.toolOptions);
+//        console.debug(items.toolOptions);
       }
       if (items.donationPercent) {
         document.getElementById("donationPercent").value = items.donationPercent;
-        console.debug(items.donationPercent);
+//        console.debug(items.donationPercent);
       }
       if (items.donationSuffix) {
         document.getElementById("donationSuffix").value = items.donationSuffix;
-        console.debug(items.donationSuffix);
+//        console.debug(items.donationSuffix);
       }
       if (items.url) {
         const url = items.url;

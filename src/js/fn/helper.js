@@ -29,7 +29,7 @@ var heightGBG = toolOptions.battlegroundsSize;
 export var MyGuildPermissions = 0;
 
 function setHeight() {
-  console.debug("mouseup", heightGBG);
+//  console.debug("mouseup", heightGBG);
   setBattlegroundSize(heightGBG);
 }
 
@@ -163,7 +163,7 @@ export function fGBsname(city_entity) {
     return "Hydra";
   }
 
-  console.debug(city_entity);
+//  console.debug(city_entity);
   return city_entity.slice(0, 10);
 }
 
@@ -540,7 +540,7 @@ export function fGoodsTally(age, good) {
   else if (age == "SpaceAgeJupiterMoon") Goods.sajm += good;
   else if (age == "SpaceAgeTitan") Goods.sat += good;
   else if (age == "NoAge") Goods.noage += good;
-  else console.debug(age, good);
+  //else console.debug(age, good);
 }
 
 export function fShowIncidents() {
@@ -742,7 +742,7 @@ export function fshowBattleground() {
     }
   });
   resizeObserver.observe(battlegroundDiv);
-  console.debug($("#battlegroundCollapse").height());
+//  console.debug($("#battlegroundCollapse").height());
   if ($("#battlegroundCollapse").height() > toolOptions.battlegroundsSize) {
     $("#battlegroundCollapse").height(toolOptions.battlegroundsSize);
   }

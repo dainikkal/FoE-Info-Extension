@@ -33,7 +33,7 @@ export var collectionTimes = false;
 export var clipboard = true;
 
 export default function set(name, state) {
-  console.debug(name, state);
+//  console.debug(name, state);
   // console.debug(this,this[name]);
   // if(name == 'showOptions'){
 
@@ -43,7 +43,7 @@ export default function set(name, state) {
     items[key] = value;
   });
 
-  console.debug(items);
+//  console.debug(items);
   // }
 }
 

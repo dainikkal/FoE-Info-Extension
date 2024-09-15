@@ -37,7 +37,7 @@ export function guildExpeditionService(msg) {
     if (entry.expeditionPoints) expeditionPoints = entry.expeditionPoints;
     ExpeditionPerformance.push([entry.player.name, solvedEncounters]);
     expeditionHTML += `<tr><td>${entry.player.name}</td><td>${expeditionPoints} </td><td>${solvedEncounters} </td></tr>`;
-    console.debug(entry.player.name, entry);
+//    console.debug(entry.player.name, entry);
   });
   // console.debug(ExpeditionPerformance);
   donationDIV2.innerHTML = expeditionHTML + `</table></div></div>`;

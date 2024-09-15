@@ -71,11 +71,11 @@ export function getPlayerLeaderboard(msg) {
   });
   // console.debug('BattlegroundPerformance',BattlegroundPerformance,GBGdata);
 
-  console.debug("2", showOptions.showBattleground);
+//  console.debug("2", showOptions.showBattleground);
 
   if (showOptions.showBattleground) {
     browser.storage.local.get([GameOrigin, GameOrigin + "BGtime"]).then((items) => {
-      console.debug("items", items);
+//      console.debug("items", items);
       if (items[GameOrigin]) GuildMembers = items[GameOrigin];
       // console.debug('GuildMembers',GuildMembers);
       storage.set(GameOrigin + "BGtime", EpocTime);
@@ -91,7 +91,7 @@ export function getPlayerLeaderboard(msg) {
             wonBattles: 0,
           }); // if member not listed, add new member
       });
-      console.debug("save GBG", GameOrigin, BattlegroundPerformance);
+//      console.debug("save GBG", GameOrigin, BattlegroundPerformance);
       storage.set(GameOrigin, BattlegroundPerformance);
       helper.fshowBattleground();
     });
@@ -121,7 +121,7 @@ export function getLeaderboard(msg) {
 export function getState(msg) {
   // console.debug('getState:', msg);
   if (msg.responseData.stateId == "subscribed") {
-    console.debug("msg:", msg);
+//    console.debug("msg:", msg);
     storage.remove(GameOrigin + "BGtime");
     storage.remove(GameOrigin);
     BattlegroundPerformance = [];
@@ -188,7 +188,7 @@ export function getState(msg) {
 
 export function getBattleground(msg) {
   mapName = msg.responseData.map.id.split("_")[0];
-  console.debug(mapName, msg);
+//  console.debug(mapName, msg);
   if (mapName == "volcano") ProvinceDefs = VolcanoProvinceDefs;
   else if (mapName == "waterfall") ProvinceDefs = WaterfallProvinceDefs;
 
@@ -214,7 +214,7 @@ export function getBattleground(msg) {
     (clan) => clan.participantId == msg.responseData.currentParticipantId
   ).signals;
   if (signals.find((clan) => !clan.provinceId)) signals.find((clan) => !clan.provinceId).provinceId = 0;
-  console.debug(map, signals, battlegroundParticipants);
+//  console.debug(map, signals, battlegroundParticipants);
 
   // console.debug(message.lastMessage.text);
 
@@ -276,7 +276,7 @@ function targetCopy() {
   // document.execCommand("copy");
 
   copyToClipboard("#targetGenText");
-  console.debug(document.getElementById("targetGenText").innerHTML);
+//  console.debug(document.getElementById("targetGenText").innerHTML);
 
   // var $temp = $("<textarea>");
   // $("body").append($temp);
@@ -294,11 +294,11 @@ function copyToClipboard(element) {
   var $temp = $("<textarea>");
   $("body").append($temp);
   var html = $(element).html();
-  console.debug(html);
+//  console.debug(html);
   // var html = $(element).text();
   html = $("<div />").html(html).find("span").contents().unwrap().end().end().html();
   html = html.replace(/<\/?p[^>]*>/g, "").replace(/<br>/g, "\r\n"); // or \r\n
-  console.debug(html);
+//  console.debug(html);
   $temp.val(html).select();
   document.execCommand("copy");
   $temp.remove();
@@ -306,7 +306,7 @@ function copyToClipboard(element) {
 
 function timeGBG(time) {
   if (!time) return "";
-  console.debug(time);
+//  console.debug(time);
   var timeText =
     "@ " +
     time.toLocaleTimeString([], {
@@ -446,7 +446,7 @@ function checkProvinces() {
         var campsReady = 0;
         var campsNotReady = 0;
         var name = thisdef.name.split(" ");
-        console.debug(thisdef.name, name, thisdef);
+//        console.debug(thisdef.name, name, thisdef);
         // if(name[0].charAt(1) == '1')
         //     name[1] = '';
         // else
@@ -475,13 +475,13 @@ function checkProvinces() {
 
                 /*if (building.id == "siege_camp" || building.id == "guild_command_post_fortified") {
                   if (building.readyAt < EpocTime) {
-                    console.debug("siege camp");
+//                    console.debug("siege camp");
                     campsReady++;
                   } else {
                     var time = new Date(building.readyAt);
                     campsNotReady++;
-                    console.debug(building.readyAt, time);
-                    console.debug("siege camp ready " + timeGBG(time));
+//                    console.debug(building.readyAt, time);
+//                    console.debug("siege camp ready " + timeGBG(time));
                   }
                 }*/
               });
@@ -558,7 +558,7 @@ function showBuildingCost(msg) {
   map
     .filter((p) => p.availableBuildings != null)
     .forEach((province) => {
-      console.debug(province);
+//      console.debug(province);
       const costs = province.availableBuildings;
       const slots = province.totalBuildingSlots;
       var name = ProvinceDefs.find((def) => def.id == province.id).name.split(" ");
@@ -626,5 +626,5 @@ function showBuildingCost(msg) {
   resizeObserver.observe(costsDiv);
   $("body").i18n();
   // console.debug(toolOptions);
-  console.debug("collapseBuildingCost", collapse);
+//  console.debug("collapseBuildingCost", collapse);
 }
