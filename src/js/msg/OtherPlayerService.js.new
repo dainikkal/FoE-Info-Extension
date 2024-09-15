@@ -41,34 +41,34 @@ import {
 import { toolOptions, setFriendsSize } from "../fn/globals.js";
 import { fArcname } from "./StartupService.js";
 
-let friendsHTML = "";
+var friendsHTML = "";
 
-let visitData = [];
-let visitAD = [];
-let visitAttack = 0;
-let visitDefense = 0;
-let visitCityAttack = 0;
-let visitCityDefense = 0;
-let redAttackBattlegrounds = 0;
-let redDefenseBattlegrounds = 0;
-let blueAttackBattlegrounds = 0;
-let blueDefenseBattlegrounds = 0;
-let redAttackExpedition = 0;
-let redDefenseExpedition = 0;
-let blueAttackExpedition = 0;
-let blueDefenseExpedition = 0;
-let redAttackRaids = 0;
-let redDefenseRaids = 0;
-let blueAttackRaids = 0;
-let blueDefenseRaids = 0;
+var visitData = [];
+var visitAD = [];
+var visitAttack = 0;
+var visitDefense = 0;
+var visitCityAttack = 0;
+var visitCityDefense = 0;
+var redAttackBattlegrounds = 0;
+var redDefenseBattlegrounds = 0;
+var blueAttackBattlegrounds = 0;
+var blueDefenseBattlegrounds = 0;
+var redAttackExpedition = 0;
+var redDefenseExpedition = 0;
+var blueAttackExpedition = 0;
+var blueDefenseExpedition = 0;
+var redAttackRaids = 0;
+var redDefenseRaids = 0;
+var blueAttackRaids = 0;
+var blueDefenseRaids = 0;
 
-let entityVisitAttack = 0;
-let entityVisitDefense = 0;
-let entityVisitCityAttack = 0;
-let entityVisitCityDefense = 0;
-let tooltipHTML = [];
-let goodsList = [];
-let Goods = {
+var entityVisitAttack = 0;
+var entityVisitDefense = 0;
+var entityVisitCityAttack = 0;
+var entityVisitCityDefense = 0;
+var tooltipHTML = [];
+var goodsList = [];
+var Goods = {
   sat: 0,
   sajm: 0,
   sav: 0,
@@ -93,54 +93,48 @@ let Goods = {
   noage: 0,
 };
 
-export let friends = [];
-export let guildMembers = [];
-export let hoodlist = [];
+export var friends = [];
+export var guildMembers = [];
+export var hoodlist = [];
 
 export function otherPlayerService(msg) {
-  let googleSheetAPI = url.sheetGuildURL;
-  let visitForgePoints = 0;
-  let visitArcBonus = null;
-  let visitArcLevel = null;
-  let visitObsLevel = null;
-  let visitTrazLevel = null;
-  let visitCdMLevel = null;
-  let visitCAPELevel = null;
-  let visitCoALevel = null;
-  let visitZeusLevel = null;
-  let visitINNOLevel = null;
-  let visitAOLevel = null;
-  let visitHSLevel = null;
-  let visitKrakenLevel = null;
-  let visitTerraLevel = null;
-  let visitCFLevel = null;
-  let visitHCLevel = null;
-  let visitSCLevel = null;
-  let visitAILevel = null;
-  let visitAtomLevel = null;
-  let visitToRLevel = null;
-  let visitCentaurusLevel = null;
-  let visitPegasusLevel = null;
-  let visitHydraLevel = null;
-  let visitstatsHTML = ``;
-  let clanPower = 0;
-  let clanBuildings = 0;
-  let clanHOFcount = 0;
-  let clanSOHcount = 0;
-  let clanTGEcount = 0;
-  let visitPenal = 0;
-  let clanGoods = 0;
-  let clanGoodsHTML = "";
-  let visitbetafp = null;
-  let visitbetaad = null;
-  let visitbetagoods = null;
-  let visitbetapower = null;
-  let totalboost = 0;
-  let beta;
-
-  // Reset all variables that should start fresh each time
-  visitData = [];
-  visitAD = [];
+  var googleSheetAPI = url.sheetGuildURL;
+  var visitForgePoints = 0;
+  var visitArcBonus = null;
+  var visitArcLevel = null;
+  var visitObsLevel = null;
+  var visitTrazLevel = null;
+  var visitCdMLevel = null;
+  var visitCAPELevel = null;
+  var visitCoALevel = null;
+  var visitZeusLevel = null;
+  var visitINNOLevel = null;
+  var visitAOLevel = null;
+  var visitHSLevel = null;
+  var visitKrakenLevel = null;
+  var visitTerraLevel = null;
+  var visitCFLevel = null;
+  var visitHCLevel = null;
+  var visitSCLevel = null;
+  var visitAILevel = null;
+  var visitAtomLevel = null;
+  var visitToRLevel = null;
+  var visitCentaurusLevel = null;
+  var visitPegasusLevel = null;
+  var visitHydraLevel = null;
+  var visitstatsHTML = ``;
+  var clanPower = 0;
+  var clanBuildings = 0;
+  var clanHOFcount = 0;
+  var clanSOHcount = 0;
+  var clanTGEcount = 0;
+  var visitPenal = 0;
+  var clanGoods = 0;
+  var clanGoodsHTML = "";
+  var visitbetafp = null;
+  var visitbetaad = null;
+  var visitbetagoods = null;
+  var visitbetapower = null;
   visitAttack = 0;
   visitDefense = 0;
   visitCityAttack = 0;
@@ -157,8 +151,8 @@ export function otherPlayerService(msg) {
   redDefenseRaids = 0;
   blueAttackRaids = 0;
   blueDefenseRaids = 0;
-  tooltipHTML = [];
-  goodsList = [];
+  visitData = [];
+  visitAD = [];
   Goods = {
     sat: 0,
     sajm: 0,
@@ -183,19 +177,22 @@ export function otherPlayerService(msg) {
     ba: 0,
     noage: 0,
   };
+  // var output = document.createElement('div');
+  // output.innerHTML = '';
+  // console.debug(msg.responseData);
+  // console.debug('era:', msg.responseData.other_player_era);
+  // console.debug('showStats:',showOptions.showStats);
+  // console.debug('msg:', msg);
 
   if (DEV && checkDebug()) {
-    beta = document.getElementById("beta");
+    // console.debug(msg.responseData);
+    var beta = document.getElementById("beta");
 
     if (beta == null) {
+      // console.debug('2');
       beta = document.createElement("div");
-      const contentElement = document.getElementById("content");
-      if (contentElement) {
-        contentElement.appendChild(beta);
-        beta.id = "beta";
-      } else {
-        console.error("Element with id 'content' not found");
-      }
+      document.getElementById("content").appendChild(beta);
+      beta.id = "beta";
     }
     visitbetafp = `<p><strong>FP</strong></p><p>`;
     visitbetaad = "</p><p><strong>A/D</strong></p><p>";
@@ -204,59 +201,58 @@ export function otherPlayerService(msg) {
   }
 
   if (msg.responseData.city_map.entities.length) {
-    let map_entities = msg.responseData.city_map.entities;
-    let cityBuidings = [];
-    let motivated = 0;
-    let notmotivated = 0;
-    let canBeMotivated = 0;
-    let canBePolished = 0;
-    //console.log('map_entities:', map_entities);
-    let id = map_entities.length;
-    while (id--) {
-      let mapID = map_entities[id];
+    var map_entities = msg.responseData.city_map.entities;
+    // console.debug('entities:', map_entities,map_entities.length);
+    var cityBuidings = [];
+    var motivated = 0;
+    var notmotivated = 0;
+    var canBeMotivated = 0;
+    var canBePolished = 0;
+    console.log('map_entities:', map_entities);
+    map_entities.forEach((mapID, id) => {
+      var isChain = false;
+      // if (mapID.type == "off_grid") {
+      //  console.debug(id, helper.fGBname(mapID.cityentity_id), mapID);
+      // }
 
-      // Ignore things that are not buildings
-      if (mapID.type == "off_grid"
-        || mapID.type == "street"
-        || mapID.type == "friends_tavern"
-      ) {
-        continue;
-      }
-      let building = helper.fGBname(mapID.cityentity_id) ?? mapID.cityentity_id;
-      let abilities = CityEntityDefs[mapID.cityentity_id]?.abilities;
-      console.log('mapID:', mapID, mapID.type, building, abilities);
-
-      let isChain = false;
-
-      if (mapID.state?.is_motivated) motivated++;
-      if (!mapID.state?.is_motivated) notmotivated++;
+      if (mapID.state && mapID.state.is_motivated) motivated++;
+      if (mapID.state && !mapID.state.is_motivated) notmotivated++;
 
       if (
-        CityEntityDefs[mapID.cityentity_id]?.abilities?.find(id => id.__class__ == "PolishableAbility")
+        CityEntityDefs[mapID.cityentity_id] &&
+        CityEntityDefs[mapID.cityentity_id].abilities.find((id) => id.__class__ == "PolishableAbility")
       )
         canBePolished++;
 
       if (
-       CityEntityDefs[mapID.cityentity_id]?.abilities?.find(id => id.__class__ == "MotivatableAbility")
+        CityEntityDefs[mapID.cityentity_id] &&
+        CityEntityDefs[mapID.cityentity_id].abilities.find((id) => id.__class__ == "MotivatableAbility")
       )
         canBeMotivated++;
 
       if (cityBuidings[mapID.cityentity_id]) {
+        // console.debug(cityBuidings[mapID.cityentity_id]);
         cityBuidings[mapID.cityentity_id].qty++;
       } else {
+        // console.debug(CityEntityDefs[mapID.cityentity_id].name);
         cityBuidings[mapID.cityentity_id] = {
           name: helper.fGBname(mapID.cityentity_id),
           qty: 1,
         };
       }
-
+      // if(!mapID.connected){
+      // console.debug('disconnected'.mapID);
+      // }else
       if (mapID.cityentity_id.substring(0, 24) == "R_MultiAge_Battlegrounds") {
+        // SoH & Great Elephant
         clanBuildings++;
         clanSOHcount++;
       } else if (mapID.cityentity_id.substring(0, 19) == "Z_MultiAge_CupBonus") {
+        // HoF ?
         clanBuildings++;
         clanHOFcount++;
       } else if (mapID.state.current_product && mapID.state.current_product.name === "penal_unit") {
+        //console.debug(CityEntityDefs[mapID.cityentity_id].name, mapID.state.current_product.amount);
         visitPenal += mapID.state.current_product.amount;
         visitTrazLevel = mapID.level;
       } else if (mapID.cityentity_id == "X_AllAge_Expedition") visitToRLevel = mapID.level;
@@ -279,22 +275,33 @@ export function otherPlayerService(msg) {
       else if (mapID.cityentity_id == "X_SpaceAgeTitan_Landmark1") visitCentaurusLevel = mapID.level;
       else if (mapID.cityentity_id == "X_SpaceAgeTitan_Landmark2") visitPegasusLevel = mapID.level;
       else if (mapID.cityentity_id == "X_SpaceAgeTitan_Landmark3") visitHydraLevel = mapID.level;
-
+      else {
+        // const entity = CityEntityDefs[mapID.cityentity_id];
+        // if(entity.type != 'tower' && entity.type != 'street' && entity.type != 'hub_main' && entity.type != 'hub_part' && entity.type != 'off_grid'){
+        // console.debug(entity.name,mapID,entity);
+        // }
+      }
       if (CityEntityDefs[mapID.cityentity_id]) {
-        let entity = CityEntityDefs[mapID.cityentity_id];
-        let boost = {};
-        let entityAge = mapID.level ? helper.fAgefromLevel(mapID.level) : msg.responseData.other_player_era;
-        let forgePoints = 0;
-        console.log('entity:', entity, 'entityAge:', entityAge);
+        const entity = CityEntityDefs[mapID.cityentity_id];
+        var boost = {};
+        const entityAge = mapID.level ? helper.fAgefromLevel(mapID.level) : msg.responseData.other_player_era;
+
+        var forgePoints = 0;
+        // console.debug(entity.name,entity,mapID);
+        // debug.innerHTML += `<p>${CityEntityDefs[mapID.cityentity_id].name}`;
+        // if(entity.type == 'street' || entity.type == 'hub_main' || entity.type == 'hub_part' || entity.type == 'off_grid'){
+        // break;
+        // }
 
         if (entity.entity_levels) {
-          let production = entity.entity_levels;
+          const production = entity.entity_levels;
+          // console.debug(production,production[mapID.level]);
           if (
             production[mapID.level] &&
             production[mapID.level].production_values &&
             production[mapID.level].production_values.length
           ) {
-            for (let value = 0; value < production[mapID.level].production_values.length; value++) {
+            for (var value = 0; value < production[mapID.level].production_values.length; value++) {
               if (production[mapID.level].production_values[value].type == "strategy_points") {
                 forgePoints = production[mapID.level].production_values[value].value;
                 if (forgePoints) console.log(`${entity.name} ${forgePoints}FP`); 
@@ -307,8 +314,10 @@ export function otherPlayerService(msg) {
               mapID.state.current_product.product.resources &&
               mapID.state.current_product.product.resources.strategy_points
             ) {
+              //console.debug(mapID);
               visitForgePoints += forgePoints;
               console.log(`visitForgePoints#1 ${visitForgePoints}FP`); 
+              //console.debug(helper.fGBname(mapID.cityentity_id), entity, mapID);
               if (DEV && checkDebug()) {
                 if (mapID.state.__class__ == "ProductionFinishedState")
                   visitbetafp += `<br>#${id}: ${mapID.x}/${
@@ -326,9 +335,12 @@ export function otherPlayerService(msg) {
         }
 
         if (entity.available_products && entity.available_products[0].__class__ == "CityEntityClanPowerProduct") {
+          // console.debug(CityEntityDefs[mapID.cityentity_id].name,entity);
+
           if (entity.entity_levels[mapID.level].__class__ == "ClanPowerProductionEntityLevel")
             clanPower += entity.entity_levels[mapID.level].clan_power;
           if (DEV && checkDebug()) {
+            // console.debug(CityEntityDefs[mapID.cityentity_id].name,mapID.state.current_product);
             if (entity.entity_levels[mapID.level].__class__ == "ClanPowerProductionEntityLevel")
               visitbetapower += `<br>#${id}: ${mapID.x}/${mapID.y} ${
                 entity.entity_levels[mapID.level].clan_power
@@ -336,6 +348,7 @@ export function otherPlayerService(msg) {
           }
         }
 
+        // Traverse component options for extra treasury donation buildings.
         try{
           if (entityAge && entity['components'] && entity['components'][entityAge] && entity['components'][entityAge]['production'] && entity['components'][entityAge]['production']['options'])
           {
@@ -374,22 +387,31 @@ export function otherPlayerService(msg) {
         if (entity.abilities) {
           forgePoints = 0;
           boost = {};
-          let bonus = entity.abilities;
+          var totalboost = 0;
+          const bonus = entity.abilities;
+          // console.debug(entity.name,bonus,entity,mapID);
           bonus.forEach((ability) => {
             if (ability.__class__ == "ChainLinkAbility") {
+              //console.debug("BENBEN: " + ability.chainId);
               isChain = true;
             }
             if (ability.__class__ == "AddResourcesToGuildTreasuryAbility") {
-              let resources = ability.additionalResources[entityAge];
+              // console.debug(entity.name,mapID);
+              // console.debug(entity.name,ability,ability.additionalResources[entityAge]);
+              const resources = ability.additionalResources[entityAge];
               if (resources && resources.resources && resources.resources.clan_power)
                 clanPower += ability.additionalResources[entityAge].resources.clan_power;
               if (ability.additionalResources["AllAge"].resources.all_goods_of_age) {
-                let goods = ability.additionalResources["AllAge"].resources.all_goods_of_age;
+                const goods = ability.additionalResources["AllAge"].resources.all_goods_of_age;
                 clanGoods += goods;
+                // console.debug(entity.name,mapID);
+                // console.debug(entity.name,ability,ability.additionalResources[entityAge]);
+                // console.debug(levelSoH,mapID.level,PowerSoH[levelSoH][mapID.level],GuildsGoods[levelSoH],clanPower,clanGoods);
                 clanGoodsHTML += helper.fGBname(mapID.cityentity_id) + ": " + goods + "<br>";
                 fGoodsTally(helper.fAgefromLevel(mapID.level), goods);
               }
               if (DEV && checkDebug()) {
+                // console.debug(CityEntityDefs[mapID.cityentity_id].name,mapID.state.current_product);
                 if (ability.additionalResources["AllAge"].resources.all_goods_of_age)
                   visitbetagoods += `<br>#${id}: ${mapID.x}/${mapID.y} ${
                     ability.additionalResources["AllAge"].resources.all_goods_of_age
@@ -401,6 +423,7 @@ export function otherPlayerService(msg) {
               }
             }
             if (ability.__class__ == "AddResourcesWhenMotivatedAbility" || ability.__class__ == "AddResourcesAbility") {
+              // console.debug(entity.name,ability,ability.additionalResources[entityAge])
               if (
                 ability.additionalResources["AllAge"] &&
                 ability.additionalResources["AllAge"].resources.strategy_points
@@ -418,14 +441,15 @@ export function otherPlayerService(msg) {
               }
             }
             if (ability.__class__ == "RandomUnitOfAgeWhenMotivatedAbility") {
+              //console.debug(entity.name, ability, ability.amount);
               visitPenal += ability.amount;
             }
           });
 
-          for (let abID = 0; abID < bonus.length; abID++) {
-            let bonusAr = bonus[abID];
+          for (var abID = 0; abID < bonus.length; abID++) {
+            const bonusAr = bonus[abID];
             if (bonusAr.boostHints && bonusAr.boostHints.length) {
-              for (let j = 0; j < bonusAr.boostHints.length; j++) {
+              for (var j = 0; j < bonusAr.boostHints.length; j++) {
                 if (bonusAr.boostHints[j].boostHintEraMap[entityAge])
                   boost = bonusAr.boostHints[j].boostHintEraMap[entityAge];
                 else boost = bonusAr.boostHints[j].boostHintEraMap["AllAge"];
@@ -434,10 +458,11 @@ export function otherPlayerService(msg) {
             }
 
             if (bonusAr.bonuses && bonusAr.bonuses.length) {
-              for (let j = 0; j < bonusAr.bonuses.length; j++) {
+              for (var j = 0; j < bonusAr.bonuses.length; j++) {
+                // console.debug(bonusAr.bonuses[j]);
                 if (bonusAr.bonuses[j].boost[entityAge]) boost = bonusAr.bonuses[j].boost[entityAge];
                 else if (bonusAr.bonuses[j].boost["AllAge"]) boost = bonusAr.bonuses[j].boost["AllAge"];
-                else boost = {};
+                else boost = null;
                 if (boost) totalboost += fBoost(boost);
 
                 if (
@@ -452,17 +477,45 @@ export function otherPlayerService(msg) {
                 )
                   forgePoints += bonusAr.bonuses[j].revenue["AllAge"].resources.strategy_points;
                 if (forgePoints) console.log(`${entity.name} ${forgePoints}FP`); 
+                // console.debug(forgePoints);
+                // else
+                // forgePoints = 0;
               }
             }
 
+            // This should be calculated if conditions for this are met.
             if (bonusAr.bonusGiven) {
+              // for(var j = 0; j < entity.bonusGiven.length; j++){
+              // console.debug(bonusAr.bonusGiven);
               let multiplier = bonusAr.linkPositions.length - 1;
               if (bonusAr.bonusGiven.boost[entityAge]) boost = bonusAr.bonusGiven.boost[entityAge];
               else if (bonusAr.bonusGiven.boost["AllAge"]) boost = bonusAr.bonusGiven.boost["AllAge"];
-              else boost = {};
+              else boost = null;
               if (boost && multiplier > 0) {
+                // this is causing double calculation of the chain building, once a the main building and second time here on the chain piece
+                // bonusAr.linkPositions.forEach((element) => {
                 totalboost += fBoost(boost) * multiplier;
+                // });
               }
+              // }
+            }
+
+            //             if (bonusAr.boostHints) {
+            //               boost = bonusAr;
+            //               totalboost += fBoost(boost);
+            //             }
+
+            if (bonusAr.additionalResources) {
+              // if(bonusAr.additionalResources[entityAge])
+              // 	// boost = bonusAr.bonusGiven.boost[entityAge];
+              // 	// console.debug(bonusAr.additionalResources[entityAge]);
+              // if(bonusAr.additionalResources['AllAge'] && bonusAr.additionalResources['AllAge'].resources.strategy_points)
+              // 	forgePoints +=  bonusAr.additionalResources['AllAge'].resources.strategy_points;
+              // 	console.debug(forgePoints);
+              // 	// else
+              // 	// console.debug(bonusAr.additionalResources);
+              // } else {
+              // console.debug(entity);
             }
           }
           if (forgePoints) {
@@ -472,18 +525,20 @@ export function otherPlayerService(msg) {
               visitbetafp += `<br>#${id}: ${mapID.x}/${
                 mapID.y
               } ${forgePoints}FP Total: ${visitForgePoints}FP ${helper.fGBname(mapID.cityentity_id)}`;
+              // console.debug(CityEntityDefs[mapID.cityentity_id].name,entity,mapID);
             }
           }
         }
 
         if (entity.hasOwnProperty("components")) {
-          let comp = entity.components[entityAge];
+          //console.debug(entity.name, entity, mapID);
+          const comp = entity.components[entityAge];
           if (comp && comp.hasOwnProperty("boosts")) {
             comp.boosts.boosts.forEach((boost) => {
               totalboost += fBoost(boost);
             });
           } else {
-            let comp = entity.components["AllAge"];
+            const comp = entity.components["AllAge"];
             if (comp && comp.hasOwnProperty("boosts")) {
               comp.boosts.boosts.forEach((boost) => {
                 totalboost += fBoost(boost);
@@ -494,9 +549,11 @@ export function otherPlayerService(msg) {
 
         if (totalboost) {
           if (DEV && checkDebug()) {
+            // visitbetaad += `<br>#${id}: ${mapID.x}/${mapID.y} ${totalboost}% ${visitAttack}/${visitDefense}/${visitCityAttack}/${visitCityDefense} ${helper.fGBname(mapID.cityentity_id)}`;
             visitbetaad += `<br>#${id}: ${totalboost}% ${entityVisitAttack}/${entityVisitDefense}/${entityVisitCityAttack}/${entityVisitCityDefense} ${visitAttack}/${visitDefense}/${visitCityAttack}/${visitCityDefense} ${helper.fGBname(
               mapID.cityentity_id
             )}`;
+            //console.debug(entity.name, entity, mapID);
             visitAD.push({
               name: entity.name,
               att: entityVisitAttack,
@@ -507,11 +564,12 @@ export function otherPlayerService(msg) {
           }
         }
       } else {
-        console.debug(mapID.cityentity_id,CityEntityDefs[mapID.cityentity_id]);
+        // console.debug(mapID.cityentity_id,CityEntityDefs[mapID.cityentity_id]);
       }
 
       if (mapID.state.current_product) {
-        let forgePoints = 0;
+        forgePoints = 0;
+        // console.debug(CityEntityDefs[mapID.cityentity_id].name,mapID.state.current_product);
         if (mapID.state.current_product.product) {
           if (mapID.state.current_product.product.resources) {
             if (mapID.state.current_product.product.resources.strategy_points) {
@@ -520,19 +578,25 @@ export function otherPlayerService(msg) {
               visitForgePoints += forgePoints;
              console.log(`visitForgePoints#3 ${visitForgePoints}FP`);
               if (DEV && checkDebug()) {
+                // console.debug(CityEntityDefs[mapID.cityentity_id].name,mapID.state.current_product);
                 visitbetafp += `<br>#${id}: ${forgePoints}FP Total: ${visitForgePoints}FP ${helper.fGBname(
                   mapID.cityentity_id
                 )}`;
               }
             }
+            // if(mapID.state.current_product.product.resources.money)
+            // 	Coins += mapID.state.current_product.product.resources.money;
           }
         }
 
         if (mapID.state.current_product.goods) {
+          // console.debug(mapID.state.current_product.goods);
           if ((mapID.state.current_product.goods.name = "clan_goods")) {
-            let goods = 0;
-            let goodsHTML = "";
-            for (let good = 0; good < mapID.state.current_product.goods.length; good++) {
+            // console.debug(mapID);
+            var goods = 0;
+            var goodsHTML = "";
+            for (var good = 0; good < mapID.state.current_product.goods.length; good++) {
+              // console.debug(mapID.state.current_product.goods[good]);
               goods += mapID.state.current_product.goods[good].value;
               goodsHTML +=
                 "<br>" +
@@ -552,9 +616,12 @@ export function otherPlayerService(msg) {
             fGoodsTally(msg.responseData.other_player_era, goods);
 
             if (DEV && checkDebug()) {
+              // console.debug(CityEntityDefs[mapID.cityentity_id].name,mapID.state.current_product);
               visitbetagoods += `<br>#${id}: ${goods} ${helper.fGBname(mapID.cityentity_id)}`;
             }
           }
+          // if(mapID.state.current_product.product.resources.money)
+          // 	Coins += mapID.state.current_product.product.resources.money;
         }
       }
 
@@ -654,7 +721,7 @@ export function otherPlayerService(msg) {
       // if( helper.fGBname(mapID.cityentity_id).includes("Sun Temple")){
       // 	console.debug("Sun Temple",CityEntityDefs[mapID.cityentity_id],mapID)
       // }
-    }
+    });
 
     // if(visitAD.length > 0){
     // 	visitAD.sort(function(b, a){return a.att - b.att});
@@ -669,8 +736,8 @@ export function otherPlayerService(msg) {
   // 			Attack += att.bonuses[id].value;
   // 	}
   // }
-  let player = msg.responseData.other_player;
-  let html = "";
+  var player = msg.responseData.other_player;
+  var html = "";
   setPlayerName(player.name, player.player_id);
   // MyInfo.id = msg.responseData.user_data.player_id;
   // MyInfo.guild = msg.responseData.user_data.clan_name;
@@ -697,31 +764,32 @@ export function otherPlayerService(msg) {
   if (html == "") html += checkInactivePlunder(guildMembers);
   visitstatsHTML += html;
   if (CityProtections.length) {
-    let match = false;
+    var match = false;
     CityProtections.forEach((city) => {
       // console.debug(city);
       if (player.player_id == city.playerId && city.expireTime > 0) {
         match = true;
-        let finish = new Date(city.expireTime).getTime() / 1000;
-        let diffText = "";
-        let diff = Math.abs(finish - Date.now() / 1000);
+        var finish = new Date(city.expireTime);
+        var diffText = "";
+        finish -= Date.now() / 1000;
+        var diff = Math.abs(finish);
         // console.debug(city,finish,diff,Date.now()/1000);
         // calculate (and subtract) whole days
-        let days = Math.floor(diff / 86400);
+        var days = Math.floor(diff / 86400);
         if (days) diffText += `${days} ${days > 1 ? "Days" : "Day"} `;
 
         // get hours
-        let hours = Math.floor(diff / 3600) % 24;
+        var hours = Math.floor(diff / 3600) % 24;
         // document.write("<br>Difference (Hours): "+hours);
         if (hours) diffText += `${hours}hr `;
 
         // get minutes
-        let minutes = Math.floor(diff / 60) % 60;
+        var minutes = Math.floor(diff / 60) % 60;
         // document.write("<br>Difference (Minutes): "+minutes);
         if (!days && minutes) diffText += `${minutes}min `;
 
         // get seconds
-        let seconds = Math.floor(diff) % 60;
+        var seconds = Math.floor(diff) % 60;
         // document.write("<br>Difference (Seconds): "+seconds);
         if (!days && !hours && seconds) diffText += `${seconds}sec`;
         visitstatsHTML += `<span class='red'>*** <span data-i18n="shield">SHIELD</span> ***</span> ${diffText}<br>`;
@@ -780,7 +848,7 @@ export function otherPlayerService(msg) {
   // 	visitstatsHTML += `<br>`;
 
   if (showOptions.showStats) {
-    let visitstats = document.getElementById("visit");
+    var visitstats = document.getElementById("visit");
     if (visitstats == null) {
       visitstats = document.createElement("div");
       document.getElementById("content").appendChild(visitstats);
@@ -862,10 +930,7 @@ export function otherPlayerService(msg) {
     });
     // console.debug(visitData);
     if (googleSheetAPI) {
-      const guildPostElement = document.getElementById("guildPostID");
-      if (guildPostElement) {
-        guildPostElement.addEventListener("click", () => post_webstore.postPlayerToSS(visitData));
-      }
+      document.getElementById("guildPostID").addEventListener("click", () => post_webstore.postPlayerToSS(visitData));
     }
   }
   // console.debug('showStats:',showOptions.showStats);
@@ -944,7 +1009,7 @@ export function otherPlayerServiceUpdateActions(msg) {
         friendsHTML += `</table></div></div></div></div>`;
       }
       if (showOptions.showGuild || showOptions.showHood || showOptions.showFriends) {
-        let friendsID = document.getElementById("friends");
+        var friendsID = document.getElementById("friends");
         friendsID.innerHTML = friendsHTML;
         // console.debug(friendsHTML);
         const friendsDiv = document.getElementById("friendsText");
@@ -980,9 +1045,9 @@ export function otherPlayerServiceUpdateActions(msg) {
 }
 
 function getFriendsHTML(list) {
-  let htmlFriends = "";
+  var htmlFriends = "";
   list.forEach((entry) => {
-    let html = "";
+    var html = "";
     // console.debug(entry);
     if (entry.hasOwnProperty("is_self") && entry.__class__ != "ClanMember") {
       // do nothing
@@ -1004,32 +1069,32 @@ function getFriendsHTML(list) {
     } else if (entry.hasOwnProperty("is_neighbor")) {
       // console.debug("is_neighbor",entry);
       if (CityProtections.length) {
-        let match = false;
+        var match = false;
         CityProtections.forEach((city) => {
           // console.debug(city);
           if (city.playerId == entry.player_id && city.expireTime > 0) {
             match = true;
-            let finish = new Date(city.expireTime);
-            let diffText = "";
+            var finish = new Date(city.expireTime);
+            var diffText = "";
             finish -= Date.now() / 1000;
-            let diff = Math.abs(finish);
+            var diff = Math.abs(finish);
             // console.debug(start,finish,diff,Date.now()/1000);
             // calculate (and subtract) whole days
-            let days = Math.floor(diff / 86400);
+            var days = Math.floor(diff / 86400);
             if (days) diffText += `${days} ${days > 1 ? "Days" : "Day"} `;
 
             // get hours
-            let hours = Math.floor(diff / 3600) % 24;
+            var hours = Math.floor(diff / 3600) % 24;
             // document.write("<br>Difference (Hours): "+hours);
             diffText += `${hours}:`;
 
             // get minutes
-            let minutes = Math.floor(diff / 60) % 60;
+            var minutes = Math.floor(diff / 60) % 60;
             // document.write("<br>Difference (Minutes): "+minutes);
             if (!days) diffText += `${minutes}:`;
 
             // get seconds
-            let seconds = Math.floor(diff) % 60;
+            var seconds = Math.floor(diff) % 60;
             // document.write("<br>Difference (Seconds): "+seconds);
             if (!days && !hours) diffText += `${seconds}`;
             html += `<tr><td>${entry.name}</td><td><span data-i18n="shield">Shield</span>: ${diffText}</td></tr>`;
@@ -1288,7 +1353,7 @@ function fGoodsTally(age, good) {
 }
 
 function checkInactivePlunder(friends) {
-  let html = "";
+  var html = "";
   friends.forEach((entry) => {
     if (PlayerID == entry.player_id && entry.is_active != true)
       html += `<span class='red'>*** <span data-i18n="inactive">INACTIVE</span> ***</span><br>`;
