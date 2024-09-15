@@ -58,12 +58,13 @@ export function pickupProduction(msg) {
           reward.state.productionOption.products.array.forEach((element) => {
             if (element.hasOwnProperty("playerResources") && element.playerResources.hasOwnProperty("resources"))
               Object.keys(element.playerResources.resources).forEach((resource) => {
-              const name = helper.fResourceShortName(resource);
-              // console.debug(name,resource)
-              if (rewardsCity[name]) rewardsCity[name] += reward.state.current_product.product.resources[resource];
-              else rewardsCity[name] = reward.state.current_product.product.resources[resource];
-            });
-        });
+                const name = helper.fResourceShortName(resource);
+                // console.debug(name,resource)
+                if (rewardsCity[name]) rewardsCity[name] += reward.state.current_product.product.resources[resource];
+                else rewardsCity[name] = reward.state.current_product.product.resources[resource];
+              });
+          });
+        }
       }
     });
   }
