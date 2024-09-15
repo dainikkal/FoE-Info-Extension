@@ -208,14 +208,15 @@ export function otherPlayerService(msg) {
     var notmotivated = 0;
     var canBeMotivated = 0;
     var canBePolished = 0;
+    console.log('map_entities:', map_entities);
     map_entities.forEach((mapID, id) => {
       var isChain = false;
       // if (mapID.type == "off_grid") {
       //  console.debug(id, helper.fGBname(mapID.cityentity_id), mapID);
       // }
 
-      if (mapID.state && mapID.state.is_motivated == true) motivated++;
-      if (mapID.state && mapID.state.is_motivated != true) notmotivated++;
+      if (mapID.state && mapID.state.is_motivated) motivated++;
+      if (mapID.state && !mapID.state.is_motivated) notmotivated++;
 
       if (
         CityEntityDefs[mapID.cityentity_id] &&

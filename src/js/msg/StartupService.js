@@ -971,15 +971,15 @@ export function boostServiceAllBoosts(msg) {
           City.QIDefendingDefense += boost[j].value;
         }
         // console.debug('City Attack/Defense:', boost[j].value);
-      } else if (
-        boost[j].type != "city_shield" &&
-        boost[j].type != "life_support" &&
-        boost[j].type != "supply_production" &&
-        boost[j].type != "tavern_visit_silver_drop" &&
-        boost[j].type != "tavern_silver_collect_bonus" &&
-        boost[j].type != "tavern_visit_fp_drop" &&
-        boost[j].type != "construction_time"
-      )
+      } //else if (
+      //   boost[j].type != "city_shield" &&
+      //   boost[j].type != "life_support" &&
+      //   boost[j].type != "supply_production" &&
+      //   boost[j].type != "tavern_visit_silver_drop" &&
+      //   boost[j].type != "tavern_silver_collect_bonus" &&
+      //   boost[j].type != "tavern_visit_fp_drop" &&
+      //   boost[j].type != "construction_time"
+      // )
        //console.debug("other boost:", boost[j].type, boost[j]);
     }
     // if(showBoosts)
